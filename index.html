@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Game of Life</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/simple-slider.css">
+	<script src="http://use.edgefonts.net/league-gothic.js"></script>
+</head>
+<body>
+	<h1>Game of Life</h1>
+	<table id="board"></table>
+	<div id="info">
+		<div>Chance of Life: <input id="chance" type="text" value="15"  data-slider="true" data-slider-range="1,100" data-slider-step="1"></div>
+		<div>Generation: <span id="generation"></span></div>
+		<div>Cell Count: <span id="cellcount"></span></div>
+		<div><span id="button" class="btn"></span></div>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/simple-slider.js"></script>
+	<script>
+		$("[data-slider]").each(function () {
+			var input = $(this);
+			$("<span>").addClass("output").insertAfter($(this));
+		})
+		.bind("slider:ready slider:changed", function (event, data) {
+			$(this).nextAll(".output:first").html(data.value.toFixed(0) + "%");
+		});
+	</script>
+</body>
+</html>
